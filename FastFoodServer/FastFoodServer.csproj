@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FFD3A81-5D2B-4EF5-8671-9EE4E94F3E72}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FastFoodServer</RootNamespace>
+    <AssemblyName>FastFoodServer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AssemblyInfoFilePath>Properties\AssemblyInfo.cs</AssemblyInfoFilePath>
+    <UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+    <UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+    <UpdateAssemblyInfoVersion>True</UpdateAssemblyInfoVersion>
+    <AssemblyVersionSettings>None.None.None.Increment</AssemblyVersionSettings>
+    <AssemblyFileVersionSettings>None.None.None.Increment</AssemblyFileVersionSettings>
+    <AssemblyInfoVersionSettings>None.None.None.Increment</AssemblyInfoVersionSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\ConfigurationData.cs" />
+    <Compile Include="Core\Logging.cs" />
+    <Compile Include="Core\Server.cs" />
+    <Compile Include="FastFood\Data\FastFoodGamePlate.cs" />
+    <Compile Include="FastFood\Data\FastFoodMissile.cs" />
+    <Compile Include="FastFood\Data\FastFoodUserPlate.cs" />
+    <Compile Include="FastFood\Data\GamePowerup.cs" />
+    <Compile Include="FastFood\Enums\GamePlateState.cs" />
+    <Compile Include="FastFood\Enums\GamePowerupType.cs" />
+    <Compile Include="FastFood\Enums\GameStatus.cs" />
+    <Compile Include="FastFood\Game.cs" />
+    <Compile Include="FastFood\Games\GameLobby.cs" />
+    <Compile Include="FastFood\Games\GameLobbyManager.cs" />
+    <Compile Include="FastFood\Hotels\Hotel.cs" />
+    <Compile Include="FastFood\Hotels\HotelManager.cs" />
+    <Compile Include="FastFood\Hotels\HotelSettings.cs" />
+    <Compile Include="FastFood\Session\SessionManager.cs" />
+    <Compile Include="FastFood\User\FastFoodGameUser.cs" />
+    <Compile Include="FastFood\User\FastFoodUser.cs" />
+    <Compile Include="Message\NewCryptoClientMessage.cs" />
+    <Compile Include="Message\NewCryptoServerMessage.cs" />
+    <Compile Include="Net\API\APIConnection.cs" />
+    <Compile Include="Net\API\APIListener.cs" />
+    <Compile Include="Net\API\Incoming\AuthenicateUserIncomingPacket.cs" />
+    <Compile Include="Net\API\Incoming\IncomingHeaders.cs" />
+    <Compile Include="Net\API\Incoming\UpdateUserCreditsIncomingPacket.cs" />
+    <Compile Include="Net\API\Incoming\UpdateUserPowerupCountIncomingPacket.cs" />
+    <Compile Include="Net\API\Outgoing\FastFoodGameFinishedOutgoingPacket.cs" />
+    <Compile Include="Net\API\Outgoing\PurchasePowerupPackageOutgoingPacket.cs" />
+    <Compile Include="Net\API\Incoming\RequestGameLoadDetailsIncomingPacket.cs" />
+    <Compile Include="Net\API\Incoming\RequestPrivateAPIAccessIncomingPacket.cs" />
+    <Compile Include="Net\API\Incoming\RequestServerVersionIncomingPacket.cs" />
+    <Compile Include="Net\API\Incoming\UpdateSettingsIncomingPacket.cs" />
+    <Compile Include="Net\API\Outgoing\AuthenicateUserResponseOutgoingPacket.cs" />
+    <Compile Include="Net\API\Outgoing\GameLoadDetailsOutgoingPacket.cs" />
+    <Compile Include="Net\API\Outgoing\OutgoingHeaders.cs" />
+    <Compile Include="Net\API\Outgoing\PrivateAPIAuthenicationResponseOutgoingPacket.cs" />
+    <Compile Include="Net\API\Outgoing\ServerVersionOutgoingPacket.cs" />
+    <Compile Include="Net\API\Outgoing\UserLeftGameOutgoingPacket.cs" />
+    <Compile Include="Net\Base\BaseConnection.cs" />
+    <Compile Include="Net\Game\GameConnection.cs" />
+    <Compile Include="Net\Game\GameListener.cs" />
+    <Compile Include="Net\Game\Incoming\GetCreditsIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\GetGamePowerupsIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\GetUserPowerupsIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\IncomingHeaders.cs" />
+    <Compile Include="Net\Game\Incoming\JoinGameIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\PurchasePowerupPackageIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\QuitGameIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\RequestScoreViewIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\RequestTextsIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\SSOTicketIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\RequestPlaytimeIncomingPacket.cs" />
+    <Compile Include="Net\Game\Incoming\UseButtonIncomingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\GameEndOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\LaunchMissileOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\MaintenanceOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\PlaytimeOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\ScoresOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\UnableToFriendOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\SetShieldOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\AuthenicationOKOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\CreditsOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\FoodHitTableOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\GamePowerupsOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\GameStartingOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\OpenBigParachuteOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\OutgoingHeaders.cs" />
+    <Compile Include="Net\Game\Outgoing\TextsOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\UpdateStateOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\PowerupGainedOutgoingPacket.cs" />
+    <Compile Include="Net\Game\Outgoing\UserPowerupsOutgoingPacket.cs" />
+    <Compile Include="Net\Game\SocketManager.cs" />
+    <Compile Include="Net\IncomingPacket.cs" />
+    <Compile Include="Net\OutgoingPacket.cs" />
+    <Compile Include="Net\Policy\PolicyListener.cs" />
+    <Compile Include="Net\Policy\SocketConnection.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\AuthenicationUtils.cs" />
+    <Compile Include="Utils\HabboEncoding.cs" />
+    <Compile Include="Utils\MonoUtils.cs" />
+    <Compile Include="Utils\RandomUtils.cs" />
+    <Compile Include="Utils\TimeUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
